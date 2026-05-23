@@ -78,7 +78,6 @@ const waText = lang === 'es'
             </svg>
             {t.whatsapp.btnText}
           </a>
-          <a href={`https://wa.me/51917018796?text=${waText}`} target="_blank" rel="noopener noreferrer" class="whatsapp-number-link">+51 917 018 796</a>
         </div>
       </div>
 
@@ -225,7 +224,6 @@ const waText = lang === 'es'
     text-decoration: none;
     transition: var(--transition-smooth);
     width: 100%;
-    margin-bottom: 1rem;
   }
 
   .whatsapp-button:hover {
@@ -240,19 +238,6 @@ const waText = lang === 'es'
   }
 
   .whatsapp-button:hover .whatsapp-svg {
-    color: #25d366;
-  }
-
-  .whatsapp-number-link {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    font-family: var(--font-sans);
-    text-decoration: none;
-    transition: var(--transition-fast);
-  }
-
-  .whatsapp-number-link:hover {
     color: #25d366;
   }
 
