@@ -75,7 +75,7 @@ import Footer from '../components/Footer.astro';
 
         // Hide/Show on scroll
         const handleScroll = () => {
-          if (window.scrollY > 50) {
+          if (window.scrollY > 150) {
             mainNav.classList.add('nav-scrolled');
           } else {
             mainNav.classList.remove('nav-scrolled');
@@ -110,12 +110,10 @@ import Footer from '../components/Footer.astro';
 <style>
   /* Header navigation styling inspired by modern web portals */
   .main-nav {
-    position: fixed;
+    position: absolute;
     top: 20px;
     left: 50%;
-    transform: translate(-50%, -100px);
-    opacity: 0;
-    pointer-events: none;
+    transform: translateX(-50%);
     width: 90%;
     max-width: 700px;
     background-color: rgba(18, 18, 20, 0.7);
@@ -126,13 +124,24 @@ import Footer from '../components/Footer.astro';
     padding: 10px 24px;
     z-index: 100;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.05);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease;
   }
 
   .main-nav.nav-scrolled {
-    transform: translate(-50%, 0);
-    opacity: 1;
-    pointer-events: auto;
+    position: fixed;
+    top: 20px;
+    background-color: rgba(18, 18, 20, 0.85);
+    animation: slideDownNav 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideDownNav {
+    from {
+      transform: translate(-50%, -100px);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
   }
 
   .nav-container {
@@ -266,6 +275,12 @@ import Footer from '../components/Footer.astro';
       max-width: none;
       border-radius: 24px;
       transition: border-radius 0.3s ease, background-color 0.3s ease;
+    }
+
+    .main-nav.nav-scrolled {
+      position: fixed;
+      top: 15px;
+      border-radius: 24px;
     }
 
     .main-nav.nav-open {
