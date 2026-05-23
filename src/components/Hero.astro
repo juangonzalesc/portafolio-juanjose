@@ -1,0 +1,165 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    role: "Especialista en SEO & Web",
+    alt: "Juan José Gonzales Centurión - Especialista en SEO & Web",
+    desc: "Especialista en SEO y Marketing Digital con +8 años de experiencia en posicionamiento orgánico, paid media, optimización técnica y estrategia de contenidos. Ayudo a marcas en sectores industriales, e-commerce y salud a dominar Google Search y escalar su tráfico orgánico.",
+    cta: "Conversemos"
+  },
+  en: {
+    role: "SEO & Web Specialist",
+    alt: "Juan José Gonzales Centurión - SEO & Web Specialist",
+    desc: "SEO and Digital Marketing Specialist with +8 years of experience in organic positioning, paid media, technical optimization, and content strategy. I help brands in industrial, e-commerce, and health sectors dominate Google Search and scale their organic traffic.",
+    cta: "Let's talk"
+  }
+}[lang];
+---
+
+<header class="hero-section">
+  <div class="hero-container">
+    <!-- Centered Avatar with subtle border and animation -->
+    <div class="avatar-wrapper">
+      <img 
+        src="/avatar.jpg" 
+        alt={t.alt} 
+        class="avatar-image" 
+        width="110" 
+        height="110" 
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+
+    <!-- Title and Subtitle -->
+    <h1 class="hero-title">
+      <span class="hero-role font-serif">{t.role}</span>
+      <span class="hero-name">Juan José Gonzales Centurión</span>
+    </h1>
+
+    <!-- Description -->
+    <p class="hero-description" set:html={t.desc} />
+
+    <!-- CTA Button -->
+    <div class="hero-cta">
+      <a href="#contacto" class="cta-button">{t.cta}</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hero-section {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    z-index: 10;
+    text-align: center;
+  }
+
+  .hero-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .avatar-wrapper {
+    position: relative;
+    display: inline-flex;
+    margin-bottom: 2rem;
+  }
+
+  .avatar-image {
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: var(--bg-secondary);
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(var(--accent-blue-rgb), 0.1);
+    transition: var(--transition-smooth);
+  }
+
+  .avatar-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+  }
+
+  .avatar-wrapper:hover .avatar-image {
+    transform: scale(1.03);
+    border-color: rgba(var(--accent-blue-rgb), 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(var(--accent-blue-rgb), 0.3);
+  }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-role {
+    font-size: 2.25rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    opacity: 0.9;
+  }
+
+  .hero-name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    background: linear-gradient(to bottom, #ffffff, #d4d4d8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-description {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 680px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-description :global(strong) {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .hero-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+
+    .hero-role {
+      font-size: 1.75rem;
+    }
+
+    .hero-name {
+      font-size: 2.5rem;
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+    }
+  }
+</style>

@@ -1,0 +1,278 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    title: "¿Qué Hago?",
+    subtitle: "Servicios integrales para maximizar tu visibilidad orgánica y acelerar tu captación digital.",
+    service1: {
+      tags: ["Auditorías", "Core Web Vitals"],
+      title: "SEO Técnico & Auditorías",
+      desc: "Auditorías SEO técnicas profundas (Screaming Frog, Search Console), optimización de Core Web Vitals y velocidad de carga para garantizar una indexación impecable y un rendimiento web sobresaliente."
+    },
+    service2: {
+      tags: ["Research", "SILO Architecture"],
+      title: "SEO On-Page & Contenidos",
+      desc: "Keyword research avanzado y keyword mapping (Ahrefs, Semrush). Análisis minucioso de la intención de búsqueda e implementación de arquitecturas SILO robustas orientadas al posicionamiento semántico."
+    },
+    service3: {
+      tags: ["WordPress", "Astro", "Tailwind"],
+      title: "Desarrollo Web WordPress & Astro",
+      desc: "Creación de sitios web corporativos, plataformas e-commerce y sitios estáticos de alto rendimiento utilizando WordPress (con maquetadores visuales avanzados como Bricks Builder y Elementor) y Astro para proyectos estáticos ultra rápidos, con código limpio y semántico."
+    },
+    service4: {
+      tags: ["Paid Media", "Funnel Optimization"],
+      title: "Paid Media & Growth",
+      desc: "Diseño y ejecución de estrategias de marketing digital 360°, optimización de embudos de conversión y gestión de campañas de performance de alta rentabilidad (Google Ads, Facebook Blueprint)."
+    }
+  },
+  en: {
+    title: "What I Do",
+    subtitle: "Comprehensive services to maximize your organic visibility and accelerate your digital acquisition.",
+    service1: {
+      tags: ["Audits", "Core Web Vitals"],
+      title: "Technical SEO & Audits",
+      desc: "Deep technical SEO audits (Screaming Frog, Search Console), Core Web Vitals optimization, and loading speed performance audits to guarantee flawless indexing and outstanding web metrics."
+    },
+    service2: {
+      tags: ["Research", "SILO Architecture"],
+      title: "On-Page SEO & Content",
+      desc: "Advanced keyword research and mapping (Ahrefs, Semrush). Meticulous search intent analysis and implementation of robust SILO architectures oriented towards semantic positioning."
+    },
+    service3: {
+      tags: ["WordPress", "Astro", "Tailwind"],
+      title: "WordPress & Astro Development",
+      desc: "Creation of corporate websites, e-commerce platforms, and high-performance static sites using WordPress (with advanced visual builders like Bricks Builder and Elementor) and Astro for ultra-fast static projects, with clean and semantic code."
+    },
+    service4: {
+      tags: ["Paid Media", "Funnel Optimization"],
+      title: "Paid Media & Growth",
+      desc: "Design and execution of 360° digital marketing strategies, conversion funnel optimization, and management of high-yield performance campaigns (Google Ads, Facebook Blueprint)."
+    }
+  }
+}[lang];
+---
+
+<section id="servicios" class="what-i-do-section">
+  <div class="container">
+    <!-- Header of the Section -->
+    <div class="section-header">
+      <h2 class="section-title">{t.title}</h2>
+      <p class="section-subtitle">{t.subtitle}</p>
+    </div>
+
+    <!-- Grid of Services -->
+    <div class="services-grid">
+      <!-- Service 1: SEO Técnico -->
+      <div class="service-card">
+        <div class="card-header">
+          <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+          </div>
+          <div class="service-tags">
+            {t.service1.tags.map((tag) => <span class="service-tag">{tag}</span>)}
+          </div>
+        </div>
+        <h3 class="service-title">{t.service1.title}</h3>
+        <p class="service-description">{t.service1.desc}</p>
+      </div>
+
+      <!-- Service 2: SEO On-Page -->
+      <div class="service-card">
+        <div class="card-header">
+          <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <div class="service-tags">
+            {t.service2.tags.map((tag) => <span class="service-tag">{tag}</span>)}
+          </div>
+        </div>
+        <h3 class="service-title">{t.service2.title}</h3>
+        <p class="service-description">{t.service2.desc}</p>
+      </div>
+
+      <!-- Service 3: WordPress Dev -->
+      <div class="service-card">
+        <div class="card-header">
+          <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <div class="service-tags">
+            {t.service3.tags.map((tag) => <span class="service-tag">{tag}</span>)}
+          </div>
+        </div>
+        <h3 class="service-title">{t.service3.title}</h3>
+        <p class="service-description">{t.service3.desc}</p>
+      </div>
+
+      <!-- Service 4: Paid Media -->
+      <div class="service-card">
+        <div class="card-header">
+          <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+          </div>
+          <div class="service-tags">
+            {t.service4.tags.map((tag) => <span class="service-tag">{tag}</span>)}
+          </div>
+        </div>
+        <h3 class="service-title">{t.service4.title}</h3>
+        <p class="service-description">{t.service4.desc}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .what-i-do-section {
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 10;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .section-count {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    vertical-align: super;
+    margin-left: 0.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .service-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+  }
+
+  .service-card:hover {
+    border-color: rgba(var(--accent-blue-rgb), 0.25);
+    background-color: rgba(18, 18, 20, 0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(var(--accent-blue-rgb), 0.05);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  .icon-wrapper {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+  }
+
+  .service-card:hover .icon-wrapper {
+    background-color: rgba(var(--accent-blue-rgb), 0.1);
+    border-color: rgba(var(--accent-blue-rgb), 0.3);
+    color: #0883db;
+  }
+
+  .service-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .service-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    background-color: var(--bg-primary);
+  }
+
+  .service-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .service-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      padding: 2rem;
+    }
+
+    .card-header {
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>

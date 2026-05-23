@@ -1,0 +1,284 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    heading: "Conversemos.",
+    subheading: "Diseñemos una estrategia web y de SEO para escalar tu negocio.",
+    whatsapp: {
+      channel: "Canal Preferente",
+      desc: "Inicia una conversación directa en WhatsApp para coordinar una llamada de diagnóstico o cotizar un proyecto.",
+      btnText: "Chat directo en WhatsApp"
+    }
+  },
+  en: {
+    heading: "Let's talk.",
+    subheading: "Let's design a web and SEO strategy to scale your business.",
+    whatsapp: {
+      channel: "Preferred Channel",
+      desc: "Start a direct conversation on WhatsApp to schedule a discovery call or request a project quote.",
+      btnText: "Direct chat on WhatsApp"
+    }
+  }
+}[lang];
+
+const waText = lang === 'es' 
+  ? "Hola%20Juan%20Jos%C3%A9,%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto." 
+  : "Hello%20Juan%20Jos%C3%A9,%20I%20would%20like%20to%20talk%20about%20a%20project.";
+---
+
+<section id="contacto" class="contact-section">
+  <div class="container">
+    <div class="contact-layout">
+      
+      <!-- Left Column: Invite Text and Social Links -->
+      <div class="contact-info">
+        <h2 class="contact-heading font-serif">{t.heading}</h2>
+        <p class="contact-subheading">
+          {t.subheading}
+        </p>
+        
+        <!-- Social Networks Links -->
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/juangonzalescenturion/" target="_blank" rel="noopener noreferrer" class="social-link" id="link-linkedin">
+            LinkedIn
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: WhatsApp CTA -->
+      <div class="contact-whatsapp-container">
+        <div class="whatsapp-card">
+          <div class="whatsapp-icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </div>
+          <h3 class="whatsapp-title">{t.whatsapp.channel}</h3>
+          <p class="whatsapp-desc">
+            {t.whatsapp.desc}
+          </p>
+          <a 
+            href={`https://wa.me/51917018796?text=${waText}`} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="whatsapp-button"
+            id="btn-whatsapp"
+          >
+            <svg class="whatsapp-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.057 5.283 5.342 0 11.825 0c3.14 0 6.095 1.22 8.316 3.441 2.222 2.22 3.44 5.176 3.44 8.317 0 6.479-5.289 11.76-11.77 11.76h-.008c-2.002 0-3.974-.537-5.708-1.554L0 24zm6.549-3.298c1.62.962 3.208 1.47 4.743 1.471 5.375 0 9.75-4.372 9.75-9.755 0-2.6-1.012-5.044-2.85-6.883C16.353 3.696 13.91 2.684 11.31 2.684c-5.378 0-9.754 4.374-9.755 9.757 0 1.637.491 3.238 1.42 4.67l-.98 3.58 3.69-.97c1.42.77 2.87 1.2 4.87 1.2zM17.3 14.86c-.33-.17-1.97-.97-2.28-1.08-.3-.11-.53-.17-.75.17-.22.33-.86 1.08-1.05 1.3-.2.22-.39.25-.72.08-1.74-.87-2.92-1.5-4.08-3.5-.3-.52-.3-.88-.13-1.05.15-.15.33-.39.5-.58.17-.2.22-.33.33-.56.11-.22.06-.42-.03-.58-.08-.17-.75-1.8-1.03-2.47-.27-.66-.55-.57-.75-.58H7.72c-.22 0-.58.08-.88.42-.3.33-1.15 1.13-1.15 2.75 0 1.62 1.18 3.19 1.35 3.42.17.22 2.33 3.56 5.65 5 1.58.68 2.81 1.09 3.77 1.4 1.6.5 3.06.43 4.2.26 1.28-.19 2.97-1.22 3.39-2.39.42-1.16.42-2.16.3-2.38-.13-.22-.45-.33-.78-.5z"/>
+            </svg>
+            {t.whatsapp.btnText}
+          </a>
+          <a href={`https://wa.me/51917018796?text=${waText}`} target="_blank" rel="noopener noreferrer" class="whatsapp-number-link">+51 917 018 796</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 10;
+  }
+
+  /* Split Layout Grid */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* Left Column Styling */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-heading {
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .contact-subheading {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 3.5rem;
+    max-width: 480px;
+    font-weight: 300;
+  }
+
+
+
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition-fast);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+
+  .social-link:hover {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+  }
+
+  .arrow-icon {
+    opacity: 0.6;
+    transition: var(--transition-fast);
+  }
+
+  .social-link:hover .arrow-icon {
+    transform: translate(1px, -1px);
+    opacity: 1;
+  }
+
+  /* Right Column WhatsApp Styling */
+  .contact-whatsapp-container {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .whatsapp-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .whatsapp-icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #25d366; /* Elegant WhatsApp Green */
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.1);
+  }
+
+  .whatsapp-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .whatsapp-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2.25rem;
+    font-weight: 300;
+    max-width: 320px;
+  }
+
+  .whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    border: 1px solid var(--text-primary);
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .whatsapp-button:hover {
+    background-color: transparent;
+    color: var(--text-primary);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.15);
+    border-color: #25d366;
+  }
+
+  .whatsapp-svg {
+    transition: var(--transition-smooth);
+  }
+
+  .whatsapp-button:hover .whatsapp-svg {
+    color: #25d366;
+  }
+
+  .whatsapp-number-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    text-decoration: none;
+    transition: var(--transition-fast);
+  }
+
+  .whatsapp-number-link:hover {
+    color: #25d366;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+
+    .contact-heading {
+      font-size: 4rem;
+    }
+
+    .contact-subheading {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-heading {
+      font-size: 3.25rem;
+    }
+
+    .contact-whatsapp-container {
+      padding: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const skills = [
+  "WordPress",
+  "WooCommerce",
+  "Astro",
+  "Bricks Builder",
+  "Elementor",
+  "HTML/CSS",
+  "Tailwind CSS",
+  lang === 'es' ? "SEO Técnico" : "Technical SEO",
+  "Paid Media"
+];
+---
+
+<section class="marquee-section">
+  <div class="marquee-container">
+    <!-- Duplicate items to create infinite scroll loop effect -->
+    <div class="marquee-content">
+      {skills.map((skill) => (
+        <span class="skill-badge">
+          <span class="badge-dot"></span>
+          {skill}
+        </span>
+      ))}
+    </div>
+    <div class="marquee-content" aria-hidden="true">
+      {skills.map((skill) => (
+        <span class="skill-badge">
+          <span class="badge-dot"></span>
+          {skill}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-section {
+    position: relative;
+    padding: 30px 0;
+    background-color: rgba(255, 255, 255, 0.01);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  /* Fade out edges of marquee using mask or linear-gradient overlays */
+  .marquee-section::before,
+  .marquee-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee-section::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-primary), transparent);
+  }
+
+  .marquee-section::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-primary), transparent);
+  }
+
+  .skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 8px 18px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    transition: var(--transition-smooth);
+  }
+
+  .skill-badge:hover {
+    color: var(--text-primary);
+    border-color: rgba(var(--accent-blue-rgb), 0.3);
+    background-color: var(--bg-tertiary);
+    transform: translateY(-1px);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(var(--accent-blue-rgb), 0.8);
+    display: inline-block;
+  }
+
+  /* Different dot colors for visual rhythm */
+  .skill-badge:nth-child(2n) .badge-dot {
+    background-color: rgba(var(--accent-orange-rgb), 0.8);
+  }
+</style>

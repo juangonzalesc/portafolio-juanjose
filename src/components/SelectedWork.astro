@@ -1,0 +1,318 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    title: "Portafolio de Trabajo",
+    subtitle: "Casos de éxito destacados en optimización orgánica y crecimiento de negocio.",
+    btnBehance: "Ver portafolio completo",
+    proboxes: {
+      category: "SEO Técnico & B2B",
+      title: "Proboxes",
+      sector: "(Sector Empaques)",
+      logro: "Posicionamiento en <strong>Primera Página en Google</strong> para la keyword transaccional de alta competencia <em>\"bolsas personalizadas\"</em>, escalando significativamente la captación de leads B2B desde búsqueda orgánica."
+    },
+    sienteespacios: {
+      category: "B2B, Construcción",
+      title: "Sienteespacios",
+      sector: "(Arquitectura & Diseño)",
+      logro: "mejore el diseño de la web para una mejor experiencia de usario y arregle los h1, h2 y parrafos para optimizar el seo,"
+    },
+    istalima: {
+      category: "SEO Local & Nicho",
+      title: "Pisosistalima",
+      sector: "(Sector Construcción)",
+      logro: "Posicionamiento en <strong>Top 1 absoluto</strong> en Google para la keyword transaccional de alta intención de compra <em>\"pisos de caucho\"</em>."
+    }
+  },
+  en: {
+    title: "Work Portfolio",
+    subtitle: "Outstanding success cases in organic optimization and business growth.",
+    btnBehance: "View full portfolio",
+    proboxes: {
+      category: "Technical SEO & B2B",
+      title: "Proboxes",
+      sector: "(Packaging Sector)",
+      logro: "Ranking on the <strong>First Page of Google</strong> for the highly competitive transactional keyword <em>\"custom bags\"</em>, significantly scaling B2B lead acquisition from organic search."
+    },
+    sienteespacios: {
+      category: "B2B, Construction",
+      title: "Sienteespacios",
+      sector: "(Architecture & Design)",
+      logro: "improved the web design for a better user experience and fixed the h1, h2, and paragraphs to optimize SEO,"
+    },
+    istalima: {
+      category: "Local & Niche SEO",
+      title: "Pisosistalima",
+      sector: "(Construction Sector)",
+      logro: "Absolute <strong>Top 1 ranking</strong> on Google for the high-intent transactional keyword <em>\"rubber flooring\"</em>."
+    }
+  }
+}[lang];
+---
+
+<section id="trabajo" class="selected-work-section">
+  <div class="container">
+    <!-- Header of the Section -->
+    <div class="section-header">
+      <h2 class="section-title">{t.title}</h2>
+      <p class="section-subtitle">{t.subtitle}</p>
+    </div>
+
+    <!-- Grid of Cards -->
+    <div class="work-grid">
+      <!-- Card 1: Proboxes -->
+      <div class="work-card">
+        <div class="card-visual">
+          <span class="card-category">{t.proboxes.category}</span>
+          <img src="/proboxes.jpg" alt={`Caso ${t.proboxes.title}`} class="card-image" loading="lazy" />
+        </div>
+        <div class="card-content">
+          <h3 class="work-title">{t.proboxes.title} <span class="work-sector">{t.proboxes.sector}</span></h3>
+          <p class="work-logro" set:html={t.proboxes.logro} />
+        </div>
+      </div>
+
+      <!-- Card 2: Sienteespacios -->
+      <div class="work-card">
+        <div class="card-visual">
+          <span class="card-category">{t.sienteespacios.category}</span>
+          <img src="/sienteespacios.jpg" alt={`Caso ${t.sienteespacios.title}`} class="card-image" loading="lazy" />
+        </div>
+        <div class="card-content">
+          <h3 class="work-title">{t.sienteespacios.title} <span class="work-sector">{t.sienteespacios.sector}</span></h3>
+          <p class="work-logro" set:html={t.sienteespacios.logro} />
+        </div>
+      </div>
+
+      <!-- Card 3: Pisosistalima -->
+      <div class="work-card">
+        <div class="card-visual">
+          <span class="card-category">{t.istalima.category}</span>
+          <img src="/istalima.jpg" alt={`Caso ${t.istalima.title}`} class="card-image" loading="lazy" />
+        </div>
+        <div class="card-content">
+          <h3 class="work-title">{t.istalima.title} <span class="work-sector">{t.istalima.sector}</span></h3>
+          <p class="work-logro" set:html={t.istalima.logro} />
+        </div>
+      </div>
+    </div>
+
+    <!-- View Full Portfolio Button -->
+    <div class="view-more-container">
+      <a href="https://www.behance.net/juangonzalesc" target="_blank" rel="noopener noreferrer" class="view-more-button">
+        {t.btnBehance}
+        <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .selected-work-section {
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 10;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .section-count {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    vertical-align: super;
+    margin-left: 0.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+  }
+
+  /* Work Grid Layout */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .work-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Card Visual Area */
+  .card-visual {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+    display: block;
+  }
+
+  .card-category {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    z-index: 2;
+  }
+
+  /* Card content typography matching Cole Mercer design */
+  .work-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .work-sector {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+  }
+
+  .work-logro {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .work-logro :global(strong) {
+    color: var(--text-primary);
+  }
+
+  .work-logro :global(em) {
+    font-style: italic;
+  }
+
+  /* Hover Animations */
+  .work-card:hover .card-visual {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .work-card:hover .card-image {
+    transform: scale(1.04);
+  }
+
+  .work-card:hover .work-title {
+    color: var(--text-primary);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    .work-card:last-child {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .work-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .work-card:last-child {
+      grid-column: span 1;
+    }
+    
+    .card-visual {
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  .view-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5rem;
+  }
+
+  .view-more-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 28px;
+    border-radius: 9999px;
+    border: 1px solid var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+  }
+
+  .view-more-button:hover {
+    background-color: transparent;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-arrow {
+    transition: var(--transition-fast);
+  }
+
+  .view-more-button:hover .btn-arrow {
+    transform: translate(2px, -2px);
+  }
+</style>

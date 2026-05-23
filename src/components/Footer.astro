@@ -1,0 +1,161 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    role: "Especialista en SEO & Web",
+    nav: {
+      home: "Inicio",
+      work: "Trabajo",
+      services: "Servicios",
+      timeline: "Trayectoria",
+      faq: "FAQ",
+      contact: "Contacto"
+    },
+    rights: "Todos los derechos reservados."
+  },
+  en: {
+    role: "SEO & Web Specialist",
+    nav: {
+      home: "Home",
+      work: "Work",
+      services: "Services",
+      timeline: "Timeline",
+      faq: "FAQ",
+      contact: "Contact"
+    },
+    rights: "All rights reserved."
+  }
+}[lang];
+---
+
+<footer class="footer-section">
+  <div class="container footer-container">
+    
+    <!-- Centered Brand Block -->
+    <div class="footer-brand">
+      <img 
+        src="/avatar.jpg" 
+        alt="Juan José Gonzales Centurión avatar" 
+        class="footer-avatar" 
+        width="48" 
+        height="48"
+        loading="lazy"
+        decoding="async"
+      />
+      <h3 class="footer-name">Juan José Gonzales Centurión</h3>
+      <p class="footer-role">{t.role}</p>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <a href="#" class="footer-nav-link">{t.nav.home}</a>
+      <a href="#trabajo" class="footer-nav-link">{t.nav.work}</a>
+      <a href="#servicios" class="footer-nav-link">{t.nav.services}</a>
+      <a href="#trayectoria" class="footer-nav-link">{t.nav.timeline}</a>
+      <a href="#faq" class="footer-nav-link">{t.nav.faq}</a>
+      <a href="#contacto" class="footer-nav-link">{t.nav.contact}</a>
+    </nav>
+
+    <!-- Bottom Copyright -->
+    <div class="footer-bottom">
+      <p class="copyright-text">
+        Copyright &copy; 2026 Juan José Gonzales Centurión. {t.rights}
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .footer-section {
+    position: relative;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 60px 0 40px 0;
+    z-index: 10;
+  }
+
+  .footer-container {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Centered Brand Block styling */
+  .footer-brand {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-avatar {
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+    object-fit: cover;
+  }
+
+  .footer-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-role {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* Navigation Links styling */
+  .footer-nav {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .footer-nav-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+  }
+
+  .footer-nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  /* Bottom Copyright styling */
+  .footer-bottom {
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .copyright-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .footer-nav {
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+</style>

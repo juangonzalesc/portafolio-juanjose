@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Marquee from '../../components/Marquee.astro';
+import SelectedWork from '../../components/SelectedWork.astro';
+import WhatIDo from '../../components/WhatIDo.astro';
+import Experience from '../../components/Experience.astro';
+import FAQ from '../../components/FAQ.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout lang="en">
+  <!-- Navigation Header (Floating, Minimalist) -->
+  <nav class="main-nav" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" aria-label="Back to top">
+        <span class="logo-dot"></span>
+        JJ
+      </a>
+      <div class="nav-links">
+        <a href="#trabajo" class="nav-link">Work</a>
+        <a href="#servicios" class="nav-link">Services</a>
+        <a href="#trayectoria" class="nav-link">Timeline</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#contacto" class="nav-link highlight-link">Let's talk</a>
+        <a href="/" class="lang-switch-link" aria-label="Ver en Español">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="flag-svg">
+            <rect width="24" height="24" fill="#FFD100"/>
+            <rect width="24" height="6" fill="#AA1515"/>
+            <rect y="18" width="24" height="6" fill="#AA1515"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Areas -->
+  <main>
+    <Hero lang="en" />
+    <Marquee lang="en" />
+    <SelectedWork lang="en" />
+    <WhatIDo lang="en" />
+    <Experience lang="en" />
+    <FAQ lang="en" />
+    <Contact lang="en" />
+  </main>
+
+  <Footer lang="en" />
+</Layout>
+
+<style>
+  /* Header navigation styling inspired by modern web portals */
+  .main-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 700px;
+    background-color: rgba(18, 18, 20, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 9999px;
+    padding: 10px 24px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.05);
+    animation: fadeInNav 0.6s ease-out;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0883db, #f97316);
+    display: inline-block;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .highlight-link {
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .highlight-link:hover {
+    background-color: transparent;
+    color: var(--text-primary);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  }
+
+  .lang-switch-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.03);
+    transition: var(--transition-fast);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .lang-switch-link:hover {
+    border-color: #0883db;
+    background-color: rgba(8, 131, 219, 0.1);
+    transform: scale(1.15);
+  }
+
+  .flag-svg {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: block;
+  }
+
+  @keyframes fadeInNav {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -10px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  /* Adjustments for mobile */
+  @media (max-width: 600px) {
+    .main-nav {
+      top: 10px;
+      padding: 8px 16px;
+      width: 95%;
+    }
+
+    .nav-links {
+      gap: 0.85rem;
+    }
+
+    .nav-link {
+      font-size: 0.75rem;
+    }
+
+    .highlight-link {
+      padding: 4px 10px;
+    }
+
+    .lang-switch-link {
+      padding: 2px 6px;
+      font-size: 0.75rem;
+    }
+  }
+</style>

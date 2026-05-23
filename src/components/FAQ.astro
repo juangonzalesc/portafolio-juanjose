@@ -1,0 +1,309 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    title: "Preguntas Frecuentes",
+    subtitle: "Preguntas frecuentes sobre metodología de trabajo, herramientas y desarrollo optimizado.",
+    card: {
+      title: "¿Tienes alguna duda?",
+      desc: "Escríbeme directamente para conversar sobre las necesidades de posicionamiento o rediseño de tu proyecto.",
+      btn: "Enviar Mensaje"
+    },
+    faqs: [
+      {
+        question: "¿Qué herramientas utilizas para las auditorías SEO?",
+        answer: "Trabajo con herramientas líderes de la industria como Ahrefs, Semrush, Screaming Frog y Google Search Console, integrando análisis avanzados con herramientas de inteligencia artificial de última generación (Gemini, Claude, Perplexity) para extraer insights accionables."
+      },
+      {
+        question: "¿En qué sectores tienes experiencia comprobada?",
+        answer: "He liderado estrategias exitosas de crecimiento orgánico y captación en diversos sectores altamente competitivos, incluyendo salud, e-commerce, construcción, empaques industriales y servicios profesionales B2B/B2C."
+      },
+      {
+        question: "¿Cómo integras el desarrollo web con el SEO?",
+        answer: "Todo sitio web que desarrollo se diseña desde la base con una arquitectura SILO-friendly, velocidad de carga optimizada para superar las auditorías de Core Web Vitals y el etiquetado técnico correcto (Schema.org estructurado, meta tags, etc.) para facilitar el rastreo y la indexación de Google."
+      }
+    ]
+  },
+  en: {
+    title: "Common Questions",
+    subtitle: "Frequently asked questions about methodology, tools, and optimized development.",
+    card: {
+      title: "Have any questions?",
+      desc: "Write to me directly to talk about the search engine positioning or redesign needs of your project.",
+      btn: "Send Message"
+    },
+    faqs: [
+      {
+        question: "What tools do you use for SEO audits?",
+        answer: "I work with industry-leading tools like Ahrefs, Semrush, Screaming Frog, and Google Search Console, integrating advanced analysis with state-of-the-art artificial intelligence tools (Gemini, Claude, Perplexity) to extract actionable insights."
+      },
+      {
+        question: "In which sectors do you have proven experience?",
+        answer: "I have led successful organic growth and digital acquisition strategies in various highly competitive sectors, including healthcare, e-commerce, construction, industrial packaging, and B2B/B2C professional services."
+      },
+      {
+        question: "How do you integrate web development with SEO?",
+        answer: "Every website I develop is designed from the ground up with a SILO-friendly architecture, loading speed optimized to pass Core Web Vitals audits, and the correct technical tagging (structured Schema.org, meta tags, etc.) to facilitate Google crawling and indexing."
+      }
+    ]
+  }
+}[lang];
+---
+
+<section id="faq" class="faq-section">
+  <div class="container">
+    <!-- Header of the Section -->
+    <div class="section-header">
+      <h2 class="section-title">{t.title}</h2>
+      <p class="section-subtitle">{t.subtitle}</p>
+    </div>
+
+    <!-- FAQ Layout -->
+    <div class="faq-layout">
+      <!-- Left side: Still have questions? -->
+      <div class="faq-left">
+        <div class="faq-card">
+          <div class="faq-icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <h3 class="faq-card-title">{t.card.title}</h3>
+          <p class="faq-card-desc">{t.card.desc}</p>
+          <a href="#contacto" class="faq-card-button">{t.card.btn}</a>
+        </div>
+      </div>
+
+      <!-- Right side: Accordion list -->
+      <div class="faq-right">
+        <div class="accordion-group">
+          {t.faqs.map((faq) => (
+            <details class="faq-details">
+              <summary class="faq-summary">
+                <span class="faq-question">{faq.question}</span>
+                <span class="faq-toggle-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </summary>
+              <div class="faq-content">
+                <p class="faq-answer">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 10;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .section-count {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    vertical-align: super;
+    margin-left: 0.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+  }
+
+  /* FAQ Layout Grid */
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 4rem;
+  }
+
+  /* Left card */
+  .faq-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .faq-icon-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .faq-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .faq-card-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .faq-card-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--text-primary);
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+  }
+
+  .faq-card-button:hover {
+    background-color: transparent;
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  /* Right Accordion */
+  .faq-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .accordion-group {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .faq-details {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .faq-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    list-style: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+
+  /* Remove default summary marker in Safari */
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    padding-right: 1.5rem;
+    transition: var(--transition-fast);
+  }
+
+  .faq-toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: var(--transition-smooth);
+  }
+
+  .faq-details[open] .faq-toggle-icon {
+    transform: rotate(45deg);
+    color: #0883db;
+  }
+
+  .faq-details[open] .faq-question {
+    color: #0883db;
+  }
+
+  .faq-content {
+    padding-bottom: 1.5rem;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .faq-answer {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive styling */
+  @media (max-width: 1024px) {
+    .faq-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .faq-card {
+      padding: 2rem;
+    }
+  }
+</style>
